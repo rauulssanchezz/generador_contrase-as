@@ -1,7 +1,7 @@
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.routers.generate_password_router import router as generate_router
+from src.routers.password_router import router as generate_router
 
 app = FastAPI(
     title='Password Generator'

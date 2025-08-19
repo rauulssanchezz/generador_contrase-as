@@ -1,5 +1,5 @@
 from fastapi.routing import APIRouter
-from fastapi import Query
+from fastapi import Body, Query
 from src.services.password_service import PasswordService
 from src.utils.enums.complexity_enum import Complexity
 
@@ -13,9 +13,9 @@ def generate_password(complexity: Complexity = Query(...)):
     return PasswordService.generate_password(complexity=complexity)
 
 @router.post('/hash')
-def hash_password(password: str):
+def hash_password(password: str = Body()):
     return PasswordService.hash_password(password=password)
 
 @router.post('/check')
-def check_password(password:str, hashed_password):
+def check_password(password:str = Body(), hashed_password: str = Body()):
     return PasswordService.check_password(password=password, hashed_password=hashed_password)
