@@ -40,6 +40,6 @@ class PasswordService:
         try:
             return bcrypt.checkpw(password.encode(), hashed_password.encode())
         except ValueError:
-            False
+            return False
         except:
             return 'Ha ocurrido un error intentalo mas tarde.'
